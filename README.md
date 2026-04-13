@@ -3,21 +3,21 @@
 <!-- TOC -->
 
 - [Update Landing Zone Repository](#update-landing-zone-repository)
-  - [How to use this action](#how-to-use-this-action)
-  - [Prerequisites](#prerequisites)
-    - [`repoSource` strategy (Preferred)](#reposource-strategy-preferred)
-    - [`repoTemplate` strategy](#repotemplate-strategy)
-  - [delete-files.json](#delete-filesjson)
-    - [File schema](#file-schema)
-    - [Generating file hashes](#generating-file-hashes)
-      - [Example](#example)
-  - [Parameters](#parameters)
-    - [`landing-zone-path`](#landing-zone-path)
-    - [`repo-sources-path`](#repo-sources-path)
-    - [`github-token`](#github-token)
-  - [Outputs](#outputs)
-    - [`deleted-files`](#deleted-files)
-    - [`deleted-directories`](#deleted-directories)
+    - [How to use this action](#how-to-use-this-action)
+    - [Prerequisites](#prerequisites)
+        - [repoSource strategy Preferred](#reposource-strategy-preferred)
+        - [repoTemplate strategy](#repotemplate-strategy)
+    - [delete-files.json](#delete-filesjson)
+        - [File schema](#file-schema)
+        - [Generating file hashes](#generating-file-hashes)
+            - [Example](#example)
+    - [Parameters](#parameters)
+        - [landing-zone-path](#landing-zone-path)
+        - [repo-sources-path](#repo-sources-path)
+        - [github-token](#github-token)
+    - [Outputs](#outputs)
+        - [deleted-files](#deleted-files)
+        - [deleted-directories](#deleted-directories)
 
 <!-- /TOC -->
 
@@ -52,7 +52,7 @@ steps:
       owner: ${{ github.repository_owner }}
 
   - name: Update Landing Zone Repository
-    uses: climpr/update-landing-zone-repository@v1
+    uses: open-climpr/update-landing-zone-repository@v1
     with:
       landing-zone-path: ${{ path-to-landing-zone-dir }}
       repo-sources-path: lz-management/repo-sources
@@ -122,7 +122,7 @@ To create this file, start with an empty file and add the following content:
 
 ```json
 {
-  "$schema": "https://raw.githubusercontent.com/climpr/climpr-schemas/main/schemas/v1.0.0/lz-management/delete-files.json#"
+  "$schema": "https://raw.githubusercontent.com/open-climpr/schemas/main/schemas/v1.0.0/lz-management/delete-files.json#"
 }
 ```
 
@@ -137,7 +137,7 @@ An example file looks like this:
 
 ```jsonc
 {
-  "$schema": "https://raw.githubusercontent.com/climpr/climpr-schemas/main/schemas/v1.0.0/lz-management/delete-files.json#",
+  "$schema": "https://raw.githubusercontent.com/open-climpr/schemas/main/schemas/v1.0.0/lz-management/delete-files.json#",
   // A list of directory relative paths that should be excluded from processing.
   "directoriesToExclude": [
     ".git" // The '.git', 'delete-files.json' and 'delete-files.jsonc' directory and files are always excluded.
