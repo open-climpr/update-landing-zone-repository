@@ -38,7 +38,7 @@ runs:
         $lzConfig = Get-Content -Path "$env:landingZonePath/metadata.json" | ConvertFrom-Json -AsHashtable -Depth 10
 
         $sourceSync            = $lzConfig.repoSource -and $lzConfig.repoSource.source -and !$lzConfig.repoSource.disabled -and !$lzConfig.decommissioned
-        $templateRepoSync      = !$sourceSync -and $lzConfig.repoTemplate -and !$lzConfig.disableWorkloadRepoTemplateSync
+        $templateRepoSync      = !$sourceSync -and $lzConfig.repoTemplate -and !$lzConfig.disableWorkloadRepoTemplateSync -and !$lzConfig.decommissioned
         $deleteFilesEnabled    = $sourceSync -or $templateRepoSync
         $sourcePath            = $sourceSync ? "$env:repoSourcesPath/$($lzConfig.repoSource.source)/contents" : $templateRepoSync ? "template-repo" : ""
         $deleteFilesConfigPath = $sourceSync ? "$env:repoSourcesPath/$($lzConfig.repoSource.source)/delete-files.json" : $templateRepoSync ? "template-repo/delete-files.json" : ""
